@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
+    "api-services": "workspace:^",
     "nuxt": "^3.14.1592",
     "vue": "latest",
     "vue-router": "latest"

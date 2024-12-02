@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { fetchDummyData } from '@shared'
+import { fetchData } from 'api-services'
 
 const data = ref(null);
 
 onMounted(async () => {
-    data.value = await fetchDummyData();
+    data.value = await fetchData();
 })
 </script>
 <template>

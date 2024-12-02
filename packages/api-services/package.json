@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "name": "api-services",
+  "description": "Shared api logic for services",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rm -rf dist && tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "typescript": "^4.6.4"
+  }
+}
