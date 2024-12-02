@@ -1,8 +1,11 @@
 {
-    "compilerOptions": {
-      "baseUrl": ".",
-      "paths": {
-        "@shared/*": ["packages/shared/src/*"]
-      }
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@shared/*": [
+        "packages/shared/src/*"
+      ]
     }
-  }
+  },
+  "extends": "expo/tsconfig.base"
+}
