@@ -1,6 +1,6 @@
 <template>
   <div>
     <NuxtRouteAnnouncer />
-    <TestFetch />
+    <RouterView />
   </div>
 </template>
