@@ -1,3 +1,27 @@
 {
-  "title": "First Profit"
+  "title": "First Profit",
+  "auth": {
+    "signIntoAccount": "Sign into your account.",
+    "enterEmail": "Enter your email",
+    "enterPassword": "Enter your password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "or": "or",
+    "signInWithGoogle": "Sign in with Google",
+    "signUpWithGoogle": "Sign up with Google",
+    "dontHaveAccount": "Don't have an account?",
+    "createAccount": "Create an account",
+    "broughtToYouBy": "Brought to you by",
+    "forgotPasswordTitle": "Forgot your password?",
+    "forgotPasswordDescription": "No problem. Simply provide us with your email address and we'll send you a password reset link.",
+    "sendResetInstructions": "Send reset instructions",
+    "backToLogin": "Back to login",
+    "getStarted": "Get Started",
+    "now": "Now",
+    "confirmPassword": "Confirm your password",
+    "acceptTermsDescription": "By signing up, you agree to our Terms of Service and Privacy Policy, as well as our partner Dqolla's Terms of Service and Privacy Policy.",
+    "alreadyHaveAccount": "Already have an account?"
+  }
 }

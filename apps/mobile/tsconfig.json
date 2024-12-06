@@ -10,5 +10,5 @@
       "@shared/*": ["../../packages/shared/src/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", "constants/flags.js"]
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js"]
 }

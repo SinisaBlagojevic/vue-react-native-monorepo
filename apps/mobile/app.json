@@ -5,7 +5,7 @@
     "slug": "profit-first",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icons/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
@@ -15,7 +15,10 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.kavazvah.profitfirst"
+      "bundleIdentifier": "com.kavazvah.profitfirst",
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -37,7 +40,19 @@
           "image": "./assets/icons/icon.png",
           "imageWidth": 200
         }
+      ],
+      [
+        "expo-secure-store",
+        {
+          "configureAndroidBackup": true,
+          "faceIDPermission": "Allow Profit First App to access your Face ID biometric data."
+        }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "a6fa129c-9f2b-4615-a76d-8603da312bf9"
+      }
+    }
   }
 }

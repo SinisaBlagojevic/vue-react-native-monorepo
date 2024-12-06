@@ -25,6 +25,13 @@ module.exports = {
       gray: {
         100: '#999999',
       },
+      black: {
+        100: '#000000',
+        200: '#121212',
+      },
+      white: {
+        DEFAULT: '#ffffff',
+      },
     },
     fontFamily: {
       rthin: ['Roboto-Thin', 'sans-serif'],

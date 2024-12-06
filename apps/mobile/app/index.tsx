@@ -3,12 +3,17 @@ import { View, Text } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import * as SplashScreen from 'expo-splash-screen'
 import { useFonts } from 'expo-font'
-
 import { useTranslation } from 'react-i18next'
-import { fetchData } from 'api-services'
+import { useAuth } from '@/providers/AuthProvider'
+import { Redirect } from 'expo-router'
+import Button from '@/components/Button'
+import useStore from '@/store/zustand'
 
 const index = () => {
   const { t } = useTranslation()
+  const { onLogout } = useAuth()
+  const { authenticated } = useStore((state) => state.authState)
+
   const [loaded] = useFonts({
     'Roboto-Black': require('../assets/fonts/Roboto-Black.ttf'),
     'Roboto-Bold': require('../assets/fonts/Roboto-Bold.ttf'),
@@ -30,10 +35,19 @@ const index = () => {
     return null
   }
 
+  const logout = async () => {
+    if (onLogout) {
+      await onLogout()
+    }
+  }
+
+  if (!authenticated) return <Redirect href="/auth/login" />
+
   return (
     <View onLayout={onLayoutRootView}>
-      <SafeAreaView>
+      <SafeAreaView className="px-4">
         <Text>{t('title')}</Text>
+        <Button onPress={logout} title="Logout" />
       </SafeAreaView>
     </View>
   )
