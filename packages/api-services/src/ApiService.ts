@@ -1,7 +1,7 @@
 import axios from 'axios';
-import UserService from "./UserService";
+import { UserService } from "./UserService";
 
-const ApiService = {
+export const ApiService = {
     interceptor401: null,
 
     /**
@@ -9,10 +9,10 @@ const ApiService = {
      */
     init() {
         // window.axios = axios;
-        axios.defaults.baseURL = '/api';
+        axios.defaults.baseURL = 'http://127.0.0.1:8000/api';
         axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
         axios.defaults.headers.common['Content-Type'] = 'application/json';
-
+        axios.defaults.headers.common['Access-Control-Allow-Origin'] ='*';
         if (UserService.getToken()) {
             ApiService.setUserHeader();
         }
@@ -127,5 +127,3 @@ const ApiService = {
         return axios(data);
     },
 };
-
-export default ApiService;

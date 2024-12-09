@@ -1,5 +1,8 @@
 <script setup>
 import { useDisplay } from "vuetify";
+definePageMeta({
+  layout: false
+});
 
 const { mobile } = useDisplay();
 </script>

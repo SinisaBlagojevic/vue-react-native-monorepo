@@ -1,0 +1,26 @@
+@use "./placeholders";
+@use "./variables";
+
+.layout-navbar {
+  @if variables.$navbar-high-emphasis-text {
+    @extend %layout-navbar;
+  }
+}
+
+.chat-position {
+  position: fixed;
+  right: 24px !important;
+  bottom: 110px !important;
+  left: auto !important;
+}
+
+.chat-position-mobile {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  right: auto!important;
+  bottom: auto!important;
+  width: 90vw!important;
+  height: 90vh!important;
+}

@@ -1,0 +1,100 @@
+@use "vuetify/lib/styles/settings" as vuetify_settings;
+
+@mixin themed($property, $light-value, $dark-value) {
+  @at-root {
+    .v-theme {
+      &--light {
+        #{$property}: $light-value;
+      }
+
+      &--dark {
+        #{$property}: $dark-value;
+      }
+    }
+  }
+}
+
+// ℹ️ This mixin is inspired from vuetify for adding hover styles via before pseudo element
+@mixin before-pseudo() {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    background: currentcolor;
+    block-size: 100%;
+    border-radius: inherit;
+    content: "";
+    inline-size: 100%;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+// ——— Light background generator ——————— //
+// ℹ️ With this you have to give text color to the component you want light bg
+// e.g. class="avatar-initial text-primary" for primary light bg
+@mixin light-bg-provider($component, $inner-selector: "", $opacity: 0.12) {
+  .#{$component}.#{$component}-light-bg #{$inner-selector} {
+    background-color: transparent !important;
+
+    &.bg-static-white {
+      background-color: white !important;
+    }
+
+    &::before {
+      position: absolute;
+      background-color: currentcolor;
+      border-radius: inherit;
+      content: "";
+      inset: 0;
+      opacity: $opacity;
+      pointer-events: none;
+    }
+  }
+}
+
+@mixin avatar-font-sizes($map: $avatar-sizes) {
+  @each $sizeName, $multiplier in vuetify_settings.$size-scales {
+    /* stylelint-disable-next-line scss/no-global-function-names */
+    $size: map-get($map, $sizeName);
+
+    &.v-avatar--size-#{$sizeName} {
+      font-size: #{$size}px;
+    }
+  }
+}
+
+
+@mixin border-color($color-name, $thickness: 1) {
+  .border-#{$color-name} {
+    border: 1px solid rgb(var(--v-theme-#{$color-name}));
+  }
+  .border-#{$color-name}-#{$thickness} {
+    border: #{$thickness}px solid rgb(var(--v-theme-#{$color-name}));
+  }
+}
+
+@mixin gradient-background($color) {
+  background: linear-gradient(270deg, rgb(var(--v-theme-#{$color})) 0%, white 300%);
+  background-size: 200% 200%;
+}
+
+@mixin gradient-animation($color) {
+  background: linear-gradient(270deg, rgb(var(--v-theme-#{$color})) 0%, white 300%);
+  background-size: 200% 200%;
+  transition: background-position 1s ease-in-out;
+
+  &:hover {
+    animation: gradient-slide 1s infinite;
+  }
+}
+
+@keyframes gradient-slide {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}

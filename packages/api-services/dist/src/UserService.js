@@ -1,7 +1,7 @@
-import ApiService from './ApiService';
+import { ApiService } from './ApiService';
 const USER_KEY = 'user';
 const USER_TOKEN_KEY = 'access_token';
-const UserService = {
+export const UserService = {
     /**
      * Set User in Local Storage and Configure API Headers
      */
@@ -11,7 +11,6 @@ const UserService = {
             return;
         }
         localStorage.setItem(USER_KEY, JSON.stringify(user));
-        this.setToken(user.token);
         ApiService.setUserHeader();
         ApiService.mountInterceptor401();
     },
@@ -56,5 +55,3 @@ const UserService = {
         this.removeUser();
     },
 };
-export default UserService;
-export { UserService };

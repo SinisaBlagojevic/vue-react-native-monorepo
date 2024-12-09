@@ -1,0 +1,161 @@
+@use "./variables/template" as variables;
+@use 'mixins' as mixins;
+// 👉 Demo spacers
+// TODO: Use vuetify SCSS variable here
+$card-spacer-content: 16px;
+
+.demo-space-x {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-block-start: -$card-spacer-content;
+
+  & > * {
+    margin-block-start: $card-spacer-content;
+    margin-inline-end: $card-spacer-content;
+  }
+}
+
+.demo-space-y {
+  & > * {
+    margin-block-end: $card-spacer-content;
+
+    &:last-child {
+      margin-block-end: 0;
+    }
+  }
+}
+
+// 👉 Card match height
+.match-height.v-row {
+  .v-card {
+    block-size: 100%;
+  }
+}
+
+// 👉 Whitespace
+.whitespace-no-wrap {
+  white-space: nowrap;
+}
+
+// 👉 Colors
+
+/*
+  ℹ️ Vuetify is applying `.text-white` class to badge icon but don't provide its styles
+  Moreover, we also use this class in some places
+
+  ℹ️ In vuetify 2 with `$color-pack: false` SCSS var config this class was getting generated but this is not the case in v3
+
+  ℹ️ We also need !important to get correct color in badge icon
+*/
+.text-white {
+  color: #fff !important;
+}
+
+.bg-var-theme-background {
+  background-color: rgba(var(--v-theme-on-surface), var(--v-hover-opacity)) !important;
+}
+
+// [/^bg-light-(\w+)$/, ([, w]) => ({ backgroundColor: `rgba(var(--v-theme-${w}), var(--v-activated-opacity))` })],
+@each $color-name in variables.$theme-colors-name {
+  .bg-light-#{$color-name} {
+    background-color: rgba(var(--v-theme-#{$color-name}), var(--v-activated-opacity)) !important;
+  }
+}
+
+// 👉 Typography
+.font-weight-semibold {
+  font-weight: 600 !important;
+}
+
+.leading-normal {
+  line-height: normal !important;
+}
+
+// Background gradient
+.bg-secondary-gradient {
+  background: linear-gradient(270deg,rgb(var(--v-theme-secondary)) 0%,white 300%);
+}
+
+.bg-primary-gradient {
+  background: linear-gradient(270deg,rgb(var(--v-theme-primary)) 0%,white 300%);
+}
+
+// Opacity
+.opacity-medium{
+  opacity: 0.5;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-grab {
+  cursor: grab;
+}
+
+.w-5 {
+  min-width: 5%;
+}
+
+.w-10 {
+  min-width: 10%;
+}
+
+.w-15 {
+  min-width: 15%;
+}
+
+.w-20 {
+  min-width: 20%;
+}
+
+.w-30 {
+  min-width: 30%;
+}
+
+.w-35 {
+  min-width: 35%;
+}
+
+.w-40 {
+  min-width: 40%;
+}
+
+.w-45 {
+  min-width: 45%;
+}
+
+.w-85 {
+  min-width: 85%;
+}
+
+.w-content-fit {
+  width: fit-content;
+}
+
+.mw-content-fit {
+  max-width: fit-content;
+}
+
+.w-screen-fit {
+  width: calc(100vw - 120px);
+}
+
+// Define your border thicknesses
+$thicknesses: 1, 2, 3, 4, 5;
+$colors: "primary", "secondary", "on-secondary", "success", "info", "warning", "error", "bright-teal", "dark-teal", "common-teal", "on-primary", "on-success", "on-warning", "background", "on-background", "on-surface", "grey-50", "grey-100", "grey-200", "grey-300", "grey-400", "grey-500", "grey-600", "grey-700", "grey-800", "grey-900", "yellow-200", "red-50", "red-100", "red-200", "red-300", "red-400";
+
+// Generate the border classes
+@each $color-name in $colors {
+  @include mixins.border-color($color-name); // This will use the default thickness of 1
+  @each $thickness in $thicknesses {
+    @include mixins.border-color($color-name, $thickness); // This will use the specified thickness
+  }
+}
+
+@each $color-name in $colors {
+  .bg-#{$color-name}-gradient {
+    @include mixins.gradient-animation($color-name);
+  }
+}

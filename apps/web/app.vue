@@ -1,6 +1,10 @@
 <template>
-  <div>
+  <NuxtLayout>
+    <NuxtLoadingIndicator />
     <NuxtRouteAnnouncer />
-    <RouterView />
-  </div>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
+<style lang="scss">
+//@use "~/assets/scss/main.scss";
+</style>

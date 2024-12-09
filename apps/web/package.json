@@ -14,9 +14,11 @@
     "api-services": "workspace:^",
     "nuxt": "^3.14.1592",
     "vue": "latest",
-    "vue-router": "latest"
+    "vue-router": "latest",
+    "vuetify-nuxt-module": "0.18.3"
   },
   "devDependencies": {
+    "sass": "^1.82.0",
     "vite-plugin-vuetify": "^2.0.4",
     "vuetify": "^3.7.4"
   }

@@ -1,0 +1,110 @@
+@use "sass:map";
+
+// Layout
+@use "vertical-nav";
+@use "default-layout";
+
+// Components
+@use "components";
+
+// Utilities
+@use "utilities";
+
+//// Misc
+//@use "misc";
+//
+//
+// Auth Pages
+@use "./pages/page-auth.scss";
+@use "./pages/page-rollout-plan.scss";
+//
+// Vuetify overrides
+@use "./libs/vuetify/index.scss";
+
+a {
+  color: rgb(var(--v-theme-primary));
+  text-decoration: none;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+// Vuetify 3 don't provide margin bottom style like vuetify 2
+p {
+  margin-block-end: 1rem;
+}
+
+// Iconify icon size
+svg.iconify {
+  block-size: 1em;
+  inline-size: 1em;
+}
+
+.interval-field {
+  min-width: 90px;
+  max-width: 90px;
+  min-height: 60px;
+}
+
+.interval-border {
+  border-right: 1px solid rgb(var(--v-theme-grey-300));
+  border-bottom: 1px solid rgb(var(--v-theme-grey-300));
+
+  &:last-child, &:nth-child(1), &:nth-child(2) {
+    border-right: none;
+  }
+}
+
+.kpi-row {
+  width: fit-content;
+}
+
+.kpi-row:hover {
+  background-color: rgb(var(--v-theme-grey-300));
+  cursor: pointer;
+}
+
+.active-row {
+  background-color: rgb(var(--v-theme-grey-300));
+  border-left: 4px solid rgb(var(--v-theme-secondary));
+}
+
+.interval-field__title {
+  min-width: 150px;
+  max-width: 150px;
+  min-height: 60px;
+  overflow-x: hidden;
+}
+
+.interval-field__totals {
+  min-width: 130px;
+  max-width: 130px;
+  min-height: 60px;
+  overflow-x: hidden;
+}
+
+.interval-field__goal {
+  min-width: 165px;
+  max-width: 165px;
+  min-height: 60px;
+  overflow-x: hidden;
+}
+
+.sync-icon{
+  transition: transform 0.3s;
+}
+
+.sync-icon:hover{
+  transform: rotate(-90deg);
+}
+
+.history-table {
+  thead {
+    background-color: rgb(var(--v-theme-blue));
+    color: white;
+
+    tr th span {
+      font-weight: bold;
+    }
+  }
+}

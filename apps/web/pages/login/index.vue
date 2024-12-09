@@ -1,4 +1,10 @@
 <script setup>
+import { login, UserService } from 'api-services';
+
+definePageMeta({
+  layout: false
+})
+
 defineProps({
   canResetPassword: {
     type: Boolean,
@@ -11,9 +17,25 @@ defineProps({
   }
 });
 
+const loginForm = reactive({
+  email: '',
+  password: ''
+});
 const showOTPForm = ref(false);
 const isPasswordVisible = ref(false);
 
+const handleLogin = async () => {
+  try {
+    const data = await login(loginForm);
+    const { token, user } = data
+    UserService.setToken(token);
+    UserService.setUser(user);
+    await navigateTo('/dashboard')
+  } catch (error) {
+    console.error('Login failed', error);
+    throw error;
+  }
+};
 </script>
 
 <template>
@@ -100,6 +122,7 @@ const isPasswordVisible = ref(false);
         >
           <VCol>
             <VTextField
+              v-model="loginForm.email"
               class="mb-1"
               color="primary"
               prepend-inner-icon="mdi-email-outline"
@@ -116,7 +139,7 @@ const isPasswordVisible = ref(false);
         >
           <VCol>
             <VTextField
-       
+              v-model="loginForm.password"
               class="mb-1"
               color="primary"
               label="Password"
@@ -149,7 +172,6 @@ const isPasswordVisible = ref(false);
             class="text-right"
           >
             <Link
-              v-if="canResetPassword"
               class="text-primary"
             >
               Forgot Password?
@@ -166,6 +188,7 @@ const isPasswordVisible = ref(false);
               color="primary"
               block
               variant="elevated"
+              @click="handleLogin"
             >
               {{ environment === 'production' ? 'Send Code' : 'Login' }}
             </VBtn>
