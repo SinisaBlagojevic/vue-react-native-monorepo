@@ -3,10 +3,6 @@
 @use "./layouts/placeholders";
 @use "./variables/template" as variables;
 
-// 👉 Avatar font-size
-.v-avatar {
-  @include mixins.avatar-font-sizes($map: variables.$avatar-font-sizes);
-}
 
 // 👉 Avatar group
 .v-avatar-group {

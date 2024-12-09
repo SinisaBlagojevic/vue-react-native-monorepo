@@ -54,18 +54,6 @@
   }
 }
 
-@mixin avatar-font-sizes($map: $avatar-sizes) {
-  @each $sizeName, $multiplier in vuetify_settings.$size-scales {
-    /* stylelint-disable-next-line scss/no-global-function-names */
-    $size: map-get($map, $sizeName);
-
-    &.v-avatar--size-#{$sizeName} {
-      font-size: #{$size}px;
-    }
-  }
-}
-
-
 @mixin border-color($color-name, $thickness: 1) {
   .border-#{$color-name} {
     border: 1px solid rgb(var(--v-theme-#{$color-name}));

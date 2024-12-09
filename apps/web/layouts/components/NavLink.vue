@@ -19,11 +19,10 @@ const handleChangeTool = () => {
     @click="handleChangeTool"
   >
     <VListItemTitle
-      class="d-flex align-center gap-2"
+      class="d-flex align-baseline gap-2"
     >
       <VIcon
         :icon="item.icon.icon"
-        class="mr-0"
       />
       {{ item.title }}
     </VListItemTitle>
